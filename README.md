@@ -21,3 +21,6 @@ N.B: the script will ask you to merge 4 txt files, but if you have less files to
 
 
 Thanks to the owners of Pyglossary and mdict-utils
+
+Download this modified version of Pyglossary, with octopus_mdict_source.py added and setup.py fixed, so after decompression of this zip file,  you can do: "python setup.py install" to install pyglossay and it will work perfectly:
+https://drive.google.com/open?id=1foGOqZGtbVgG65zlEk2hXMPXKSQyNuIX
