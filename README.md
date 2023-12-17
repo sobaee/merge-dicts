@@ -1,8 +1,8 @@
 # merge-dicts
 
-This is a bash script to automatically merge multiple tabfile dictionaries (with .txt extension) and other .txt files; may not work properly with other dictionaries.
+This is a bash script to automatically merge multiple tabfile dictionaries (with .txt extension) and other .txt files; may not work properly with other dictionaries, so if you need to merge two or more dictionaries, convert each one of them using pyglossary to .txt tabfile then merge them.
 
-The script will optionally convert the merged .txt file to .mtxt (octopus source), and pack it .mdx dictionary.
+The script will optionally convert the merged .txt file to .mtxt (octopus source), and pack it to .mdx dictionary.
 
 DEPENDENCIES:
 
