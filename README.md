@@ -20,4 +20,4 @@ USAGE:
 N.B: the script will ask you to merge 4 txt files, but if you have less files to merge, just ignore them by "enter" without writing any input.
 
 
-Theanks to the owners of Pyglossary and mdict-utils
+Thanks to the owners of Pyglossary and mdict-utils
