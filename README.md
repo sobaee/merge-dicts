@@ -13,6 +13,7 @@ Pyglossary, mdict-utils, python-lzo, which
 
 <br />
 <br />
+
 ## USAGE:
 
 - Navigate to the directory that contains this bash script (or python script) and copy the dictionary files to the same directory, and  run the command: `bash merge-dicts.sh`
