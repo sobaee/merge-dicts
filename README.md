@@ -16,7 +16,7 @@ Pyglossary, mdict-utils, python-lzo, which
 
 ## USAGE:
 
-- Navigate to the directory that contains this bash script (or python script) and copy the dictionary files to the same directory, and  run the command: `bash merge-dicts.sh`
+- Navigate to the directory that contains this script and copy the dictionary files to the same directory, and  run this command: `bash merge-dicts.sh`
 
 - Before merging, the script will ask you if you want to sort the files (file1 then file2, etc) or not.
 
