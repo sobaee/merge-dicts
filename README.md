@@ -25,4 +25,4 @@ Pyglossary, mdict-utils, python-lzo, which
 
 Thanks to the owners of Pyglossary and mdict-utils.
 
-Download this modified version of Pyglossary, with octopus_mdict_source.py added and setup.py fixed, so after decompression of this zip file,  you can do: `ython setup.py install` to install pyglossay and it will work perfectly: [LINK](https://drive.google.com/open?id=1foGOqZGtbVgG65zlEk2hXMPXKSQyNuIX)
+Download my modified version of Pyglossary from Google Drive, with octopus_mdict_source.py added and setup.py fixed; after decompression of the downloaded file, you can do: `python setup.py install` from inside the decompressed folder to install pyglossay and it will work perfectly: [LINK](https://drive.google.com/open?id=1foGOqZGtbVgG65zlEk2hXMPXKSQyNuIX)
