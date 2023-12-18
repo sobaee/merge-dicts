@@ -1,19 +1,52 @@
 #!/bin/bash
+# 
+# Dependencies:
+# python3, pyglossary, mdict-utils, which
+# 
+# Install all dependencies with:
+# pip3 install mdict-utils python-lzo
+# pyglossary better to be installed from a local folder with: python setup.py install (better to use my ready pyglossary zip file)
+if command -v python3; then
+    echo 'Python3 is ready!'
+else
+    echo "ERROR: python not installed! Download and install from https://www.python.org/downloads"
+    exit 1
+fi
 
-read -p "1st file name: " file1
-read -p "2nd file name: " file2
-read -p "3rd file name: " file3
-read -p "4th file name: " file4
+if command -v pyglossary; then
+    echo 'Pyglossary is ready!'
+else
+    echo "ERROR: pyglossary not installed! Run 'pip3 install pyglossary'"
+    exit 1
+fi
+
+if command -v mdict; then
+    echo 'Mdict-utils is ready!'
+else
+    echo "ERROR: mdict not found! Run 'pip3 install mdict-utils'!"
+    exit 1
+fi
+
+read -p "How many .txt files do you want to merge? " num_files
+num_files=$((num_files))
+
+output_files=()
+for ((i=1; i<=num_files; i++))
+do
+    read -p "$i file name: " file
+    output_files+=("$file")
+done
+
 read -p "Output file name: " output
 read -p "Do you want to sort the files (SLOW if the files are big)? (y/n): " choice
 
 # Use the files in the cat command
 case $choice in
     y|Y) # Sort the files
-        cat "$file1" "$file2" "$file3" "$file4" | sort > "$output"
+        cat "${output_files[@]}" | sort > "$output"
         ;;
     n|N) # Do not sort the files
-        cat "$file1" "$file2" "$file3" "$file4" > "$output"
+        cat "${output_files[@]}" > "$output"
         ;;
     *) # Invalid choice
         echo "Invalid option. Please enter y or n."
@@ -22,11 +55,11 @@ esac
 
 src="$output"
 
-read -p "Do you want to continue with the next step to convert the merged file to .mtxt with Headword sorting? (y/n) " answer
+read -p "Do you want to convert the merged file to .mtxt (with optional headwords sorting)? (y/n) " answer
     case $answer in
     y|Y) # Use Word Title option
     
-        echo 'You chose to continue!'
+        echo 'Your file will be converted to .mtxt!'
         ;;
     n|N) # Do not use Word Title option
        echo 'Thank you for using my tool!'
@@ -38,7 +71,7 @@ read -p "Do you want to continue with the next step to convert the merged file t
         ;;
 esac
 
-read -p "Sort Headwords with Pyglossary before conversion to mtxt (ex. english then arabic headwords)? (y/n): " choice1
+read -p "Do you want to sort headwords before conversion to mtxt (ex. english then arabic headwords)? (y/n): " choice1
 
 case $choice1 in
     y|Y) # Sort the files
@@ -70,17 +103,16 @@ read -p "Convert the resulted .mtxt file to mdx? (y/n): " choice2
 
 src="$output"
 case $choice2 in
-    y|Y) # Sort the files
-
-mdict --title title.html --description description.html -a "${src%.*}.mtxt" "${src%.*}.mdx"
-
-echo 'All done!'
+    y|Y) # Convert to mdx
+        mdict --title title.html --description description.html -a "${src%.*}.mtxt" "${src%.*}.mdx"
+        echo 'All done!'
         ;;
-    n|N) # Do not sort the files
+    n|N) # Do not convert to mdx
         echo 'All done!'
         ;;
     *) # Invalid choice
         echo "Invalid option. Please enter y or n."
         ;;
 esac
-echo 'Thank you for using my tool'
+
+echo 'Thank you for using my tool!'
