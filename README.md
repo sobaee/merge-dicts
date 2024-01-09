@@ -1,6 +1,6 @@
 # merge-dicts
 
-This is a python script to automatically merge multiple tabfile dictionaries (with .txt extension) and other .txt files; note that this script may not work properly with other dictionaries, so if you need to merge any number of dictionaries, convert each one of them using pyglossary to .txt tabfile then merge them.
+This is a python script to automatically merge multiple dictionaries (with .txt or .mtxt extensions); note that this script may not work properly with other dictionaries, so if you need to merge any number of dictionaries, convert each one of them using pyglossary to .mtxt or .txt then merge them.
 
 The script will ask you to define the number of the files that you want merge, then optionally convert the merged .txt file to .mtxt (octopus mdict source), and then pack it to .mdx dictionary.
 
@@ -17,9 +17,12 @@ python3, pyglossary, mdict-utils, python-lzo
 ## USAGE:
 
 - Navigate to the directory that contains this script and copy the dictionary files to the same directory, and  run this command: `python merge-dicts.py`
+  
+ N.B: it is not allowed to merge different extensions with other extensions.
 
 
 - Before merging, the script will ask you if you want to sort the files (file1 then file2, etc) or not.
+ N.B: sort .txt files, but not .mtxt files; because this will cause errors.
 
 
 - After merging, the script will ask you if you want to convert the resulted file to .mtxt and sort headwords (ex. english then arabic headwords) or not, and finally will ask you if you want to convert the resulted .mtxt file to .mdx.
