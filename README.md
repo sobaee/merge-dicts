@@ -1,6 +1,6 @@
 # merge-dicts
 
-This is a python script to automatically merge multiple dictionaries (with .txt or .mtxt extensions); note that this script may not work properly with other dictionaries, so if you need to merge any number of dictionaries, convert each one of them using pyglossary to .mtxt or .txt then merge them.
+This is a python script to automatically merge multiple dictionaries (with .txt or .mtxt extensions); note that this script may not work properly with other types of dictionaries other than .mtxt or .txt, so if you need to merge any number of dictionaries, convert each one of them using pyglossary to .mtxt OR .txt then merge them.
 
 The script will ask you to define the number of the files that you want merge, then optionally convert the merged .txt file to .mtxt (octopus mdict source), and then pack it to .mdx dictionary.
 
