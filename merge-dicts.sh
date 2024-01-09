@@ -34,7 +34,7 @@ do
 done
 
 read -p "Output file name: " output
-read -p "Do you want to sort the files (SLOW if the files are big)? (y/n): " choice
+read -p "Do you want to sort the files (SLOW if the files are big and not needed if .mtxt)? (y/n): " choice
 
 # Use the files in the cat command
 case $choice in
@@ -43,6 +43,25 @@ case $choice in
         ;;
     n|N) # Do not sort the files
         cat "${output_files[@]}" > "$output"
+        ;;
+    *) # Invalid choice
+        echo "Invalid option. Please enter y or n."
+        ;;
+esac
+
+src="$output"
+read -p "Convert the resulted .mtxt to mdx (only if the output is .mtxt; but if not .mtxt type 'n')? (y/n): " choice3
+
+case $choice3 in
+    y|Y) # Convert to mdx
+        printf ${src%.*} > description.html
+        printf ${src%.*} > title.html
+        mdict --title title.html --description description.html -a "${src%.*}.mtxt" "${src%.*}.mdx"
+        echo 'All done!'
+        exit 1
+        ;;
+    n|N) # Do not convert to mdx
+        echo 'Your file is not .mtxt or dont want to convert it to mdx, or you you want to sort according to language!'
         ;;
     *) # Invalid choice
         echo "Invalid option. Please enter y or n."
@@ -78,7 +97,7 @@ case $choice1 in
             sort_key="en-ar"
         fi
         # Use the sorting key in the Pyglossary command
-        pyglossary "$src" "${src%.*}.mtxt" --write-format=OctopusMdictSource --sort --sort-key=":$sort_key"
+        pyglossary "$src" "${src%.*}1.mtxt" --write-format=OctopusMdictSource --sort --sort-key=":$sort_key"
 
         printf ${src%.*} > description.html
         printf ${src%.*} > title.html
@@ -87,7 +106,7 @@ case $choice1 in
         ;;
     n|N) # Do not sort the files
         
-        pyglossary "$src" "${src%.*}.mtxt" --write-format=OctopusMdictSource
+        pyglossary "$src" "${src%.*}1.mtxt" --write-format=OctopusMdictSource
         echo 'Conversion to mtxt done without sorting!'
         ;;
     *) # Invalid choice
@@ -100,7 +119,7 @@ read -p "Convert the resulted .mtxt file to mdx? (y/n): " choice2
 src="$output"
 case $choice2 in
     y|Y) # Convert to mdx
-        mdict --title title.html --description description.html -a "${src%.*}.mtxt" "${src%.*}.mdx"
+        mdict --title title.html --description description.html -a "${src%.*}1.mtxt" "${src%.*}.mdx"
         echo 'All done!'
         ;;
     n|N) # Do not convert to mdx
